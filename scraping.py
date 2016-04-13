@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-from lxml import html
-import requests
+from lxml import html as lh
+import urllib2
 import sys
 import psycopg2
 
@@ -18,8 +18,9 @@ dominoTypes = ["Western dominoes", "Chinese dominoes", "Number tiles", "Money ti
 
 # Gets the HTML from the page
 def getPage(url):
-	page = requests.get(url)
-	tree = html.fromstring(page.content)
+	page = urllib2.Request(url)
+	tree = lh.parse(urllib2.urlopen(page))
+	#tree = html.fromstring(page.info())
 	return tree
 
 
@@ -46,6 +47,7 @@ def parseHTML(tree):
 					if subitem.text != None:
 						if subitem.attrib.get('href'):
 							link = subitem.attrib.get('href')
+							link = link[2:]
 						name.append(subitem.text.strip())
 					
 			# grab game's number of recommended players
@@ -72,13 +74,47 @@ def parseHTML(tree):
 		gameInfo = [name, players, design, quantity, link]	
 		allGames.append(gameInfo)
 
+	print allGames
 	return allGames
 
-#def getDescription(url):
+def getDescription(url):
 	# Going to open up the new webpage here, and get the description for the game
+	difficulty = 0
 	desc = ""
+	print url
 	page = getPage(url)
-	return desc
+
+	tags = page.xpath('//p/text()')
+	for element in tags:
+		desc += element
+		#for text in element.iterdescendants():
+		#	desc += text.text
+		desc += "\n"
+		
+	print(desc)
+	
+	if len(desc) < 1000:
+		difficulty = 1
+
+	elif len(desc) < 4000 and len(desc) > 1000 :
+		difficulty = 2
+
+	elif len(desc) > 4000 and len(desc) < 9000:
+		difficulty = 3
+
+	elif len(desc) > 9000 and len(desc) < 15000:
+		difficulty = 4
+
+	elif len(desc) > 1500 and len(desc) < 25000:
+		difficulty = 5
+
+	elif len(desc) > 25000:
+		difficulty = 6
+
+	print(difficulty)
+	descInfo = [desc, difficulty]
+
+	return descInfo
 
 
 def buildTables(allGames):
@@ -100,15 +136,19 @@ def buildTables(allGames):
 
 def insertCardGame(game):
 	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
-
 	cur = conn.cursor()
+
+	difficulty = getDifficulty(game[4])
+
 	curr.execute("INSERT INTO Card(Name, suits, numCards) VALUES (%s, %s, %s)", (game[0],game[2],game[3]))
 
 
 def insertDominoGame(game):
 	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
-
 	cur = conn.cursor()
+	
+	difficulty = getDifficulty(game[4])
+
 	curr.execute("INSERT INTO Domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
 
 
@@ -117,4 +157,5 @@ if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
+	getDescription("https://www.pagat.com"+listOfGames[2][4])
 	#buildTables(listOfGames)
