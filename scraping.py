@@ -57,7 +57,22 @@ def parseHTML(tree):
 						# converts ASCII to regular string
 						numPlayers = subitem.text.encode('ascii','replace')
 						numPlayers = numPlayers.replace('?', '-')
-						players.append(numPlayers)
+						numPlayers = numPlayers.split(',')
+
+						for item in numPlayers:
+							# append every number of players within range specified (if specified)
+							if "-" in item:
+								item = item.strip(', ')
+								rangePlayers = item.split('-')
+								for x in range(int(rangePlayers[0]),int(rangePlayers[1])+1):
+									players.append(x)
+
+							else:
+								item = item.strip(' ')
+								if item != "":
+									item = item.strip('+')
+									# currently just ignoring x+ players???
+									players.append(int(item))							
 			
 			# grab type of game
 			elif item.attrib.get('class') == "col3":
@@ -73,8 +88,8 @@ def parseHTML(tree):
 	
 		gameInfo = [name, players, design, quantity, link]	
 		allGames.append(gameInfo)
+		print(gameInfo)
 
-	print allGames
 	return allGames
 
 def getDescription(url):
@@ -91,7 +106,6 @@ def getDescription(url):
 		#	desc += text.text
 		desc += "\n"
 		
-	print(desc)
 	
 	if len(desc) < 1000:
 		difficulty = 1
@@ -140,7 +154,8 @@ def insertCardGame(game):
 
 	difficulty = getDifficulty(game[4])
 
-	curr.execute("INSERT INTO Card(Name, suits, numCards) VALUES (%s, %s, %s)", (game[0],game[2],game[3]))
+	# do we need a loop here? An entirely new entry if you're changing like jst the numCards value? 
+	curr.execute("INSERT INTO card(name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
 
 
 def insertDominoGame(game):
@@ -149,7 +164,7 @@ def insertDominoGame(game):
 	
 	difficulty = getDifficulty(game[4])
 
-	curr.execute("INSERT INTO Domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
+	curr.execute("INSERT INTO domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
 
 
 
