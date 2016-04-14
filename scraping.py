@@ -45,10 +45,12 @@ def parseHTML(tree):
 			if item.attrib.get('class') == "col1":
 				for subitem in item.iterdescendants():
 					if subitem.text != None:
+						nameList = subitem.text.encode('ascii', 'replace')
 						if subitem.attrib.get('href'):
 							link = subitem.attrib.get('href')
 							link = link[2:]
-						name.append(subitem.text.strip())
+						name.append(nameList.strip())
+						
 					
 			# grab game's number of recommended players
 			elif item.attrib.get('class') == "col2":
@@ -57,7 +59,22 @@ def parseHTML(tree):
 						# converts ASCII to regular string
 						numPlayers = subitem.text.encode('ascii','replace')
 						numPlayers = numPlayers.replace('?', '-')
-						players.append(numPlayers)
+						numPlayers = numPlayers.split(',')
+
+						for item in numPlayers:
+							# append every number of players within range specified (if specified)
+							if "-" in item:
+								item = item.strip(', ')
+								rangePlayers = item.split('-')
+								for x in range(int(rangePlayers[0]),int(rangePlayers[1])+1):
+									players.append(x)
+
+							else:
+								item = item.strip(' ')
+								if item != "":
+									item = item.strip('+')
+									# currently just ignoring x+ players???
+									players.append(int(item))							
 			
 			# grab type of game
 			elif item.attrib.get('class') == "col3":
@@ -70,11 +87,29 @@ def parseHTML(tree):
 				for subitem in item.iterdescendants():
 					if subitem.text != None:
 						quantity.append(subitem.text.strip())
-	
-		gameInfo = [name, players, design, quantity, link]	
-		allGames.append(gameInfo)
 
-	print allGames
+
+		playerString = ""
+		for item in players:
+			playerString += str(item) + " "
+			
+		nameString = ""
+		for item in name:
+			nameString += str(item) + " "
+
+		quantityString = ""
+		for item in quantity:
+			quantityString += str(item) + " "
+
+		designString = ""
+		for item in design:
+			designString += item + " "
+
+
+		gameInfo = [nameString, playerString, designString, quantityString, link]	
+		allGames.append(gameInfo)
+		#print(gameInfo)
+
 	return allGames
 
 def getDescription(url):
@@ -91,7 +126,6 @@ def getDescription(url):
 		#	desc += text.text
 		desc += "\n"
 		
-	print(desc)
 	
 	if len(desc) < 1000:
 		difficulty = 1
@@ -140,8 +174,10 @@ def insertCardGame(game):
 
 	difficulty = getDifficulty(game[4])
 
-	curr.execute("INSERT INTO Card(Name, suits, numCards) VALUES (%s, %s, %s)", (game[0],game[2],game[3]))
-
+	# do we need a loop here? An entirely new entry if you're changing like jst the numCards value? 
+	curr.execute("INSERT INTO card(name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
+	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, description) VALUES (%s \
+%s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
 
 def insertDominoGame(game):
 	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
@@ -149,8 +185,9 @@ def insertDominoGame(game):
 	
 	difficulty = getDifficulty(game[4])
 
-	curr.execute("INSERT INTO Domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
-
+	curr.execute("INSERT INTO domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
+	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, descrition) VALUES (%s \
+%s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
 
 
 if __name__ == "__main__":
