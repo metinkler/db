@@ -1,0 +1,275 @@
+------------------------------------------------------------------------------------------------------
+NAME: Die Macher
+DESCRIPTION:
+Die Macher is a game about seven sequential political races in different regions of Germany. Players are in charge of national political parties, and must manage limited resources to help their party to victory. The winning party will have the most victory points after all the regional elections. There are four different ways of scoring victory points. First, each regional election can supply one to eighty victory points, depending on the size of the region and how well your party does in it. Second, if a party wins a regional election and has some media influence in the region, then the party will receive some media-control victory points. Third, each party has a national party membership which will grow as the game progresses and this will supply a fair number of victory points. Lastly, parties score some victory points if their party platform matches the national opinions at the end of the game.
+
+The 1986 edition featured 4 parties from the old West Germany and supported 3-4 players. The 1997 edition supports up to 5 players in the re-united Germany and updated several features of the rules as well.  The 2006 edition also supports up to 5 players and adds a shorter 5 round variant and additional rules updates by the original designer.
+
+Die Macher is #1 in the Valley Games Classic Line
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic159509.jpg
+NUMPLAYERS:
+5
+LENGTH:
+240
+MECHANICS:
+['Area Control / Area Influence', 'Auction/Bidding', 'Dice Rolling', 'Hand Management', 'Simultaneous Action Selection']
+COMPLEXITY:
+14
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Dragonmaster
+DESCRIPTION:
+Dragonmaster is a trick-taking card game based on an older game called Coup d'etat. Each player is given a supply of plastic gems, which represent points. Each player will get to be the dealer for five different hands, with slightly different goals for each hand. After all cards have been dealt out, the dealer decides which hand best suits his or her current cards, and the other players are penalized points (in the form of crystals) for taking certain tricks or cards. For instance, if "first" or "last" is called, then a player is penalized for taking the first or last tricks. All players will get a chance to be dealer for five hands, but other players can steal this opportunity by taking all of the tricks during certain hands. At the end, the biggest pile of gems wins the game
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic184174.jpg
+NUMPLAYERS:
+4
+LENGTH:
+30
+MECHANICS:
+['Trick-taking']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Samurai
+DESCRIPTION:
+Part of the Knizia tile-laying trilogy, Samurai is set in medieval Japan. Players compete to gain the favor of three factions: samurai, peasants, and priests, which are represented by helmet, rice paddy, and Buddha tokens scattered about the board, which features the islands of Japan. The competition is waged through the use of hexagonal tiles, each of which help curry favor of one of the three factions — or all three at once! Players can make lightning-quick strikes with horseback ronin and ships or approach their conquests more methodically. As each token (helmets, rice paddies, and Buddhas) is surrounded, it is awarded to the player who has gained the most favor with the corresponding group.
+
+Gameplay continues until all the symbols of one type have been removed from the board or four tokens have been removed from play due to a tie for influence.
+
+At the end of the game, players compare captured symbols of each type, competing for majorities in each of the three types. Ties are not uncommon and are broken based on the number of other, "non-majority" symbols each player has collected.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic2571921.png
+NUMPLAYERS:
+4
+LENGTH:
+60
+MECHANICS:
+['Area Control / Area Influence', 'Hand Management', 'Set Collection', 'Tile Placement']
+COMPLEXITY:
+10
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Tal der Könige
+DESCRIPTION:
+When you see the triangular box and the luxurious, large blocks, you can tell this game was designed to be beautiful as well as functional.  The object of the game is to build pyramids out of the different colored blocks.  A pyramid scores more points when it's made from a few colors, but it's much harder to consistently outbid the other players for the necessary blocks.  The game is over when the Pharoah's Pyramid in the center is completed, which is built using all the blocks that the players don't use during the course of the game.
+
+Final round 1990 Hippodice Spieleautorenwettbewerb.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic285299.jpg
+NUMPLAYERS:
+4
+LENGTH:
+60
+MECHANICS:
+['Action Point Allowance System', 'Area Control / Area Influence', 'Auction/Bidding', 'Set Collection']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Acquire
+DESCRIPTION:
+This Sid Sackson classic has taken many different forms over the years depending on the publisher.  Each player strategically invests in businesses, trying to retain a majority of stock.  As the businesses grow with tile placements, they also start merging, giving the majority stockholders of the acquired business sizable bonuses, which can then be used to reinvest into other chains.  All of the investors in the acquired company can then cash in their stocks for current value or trade them 2-for-1 for shares of the newer, larger business.  The game is a race to acquire the greatest wealth.
+
+Some versions of the 3M bookshelf edition included rules for a 2-player variant.
+
+The original version is part of the 3M Bookshelf Series.
+
+Note: many books and websites list this as a 1962 publication. This is incorrect; information from Sid Sackson's diaries, correspondence, and royalty statements prove that it was published in 1964.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic342163.jpg
+NUMPLAYERS:
+6
+LENGTH:
+90
+MECHANICS:
+['Hand Management', 'Stock Holding', 'Tile Placement']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Mare Mediterraneum
+DESCRIPTION:
+In the ancient lands along the Mediterranean, players attempt to satisfy their unique victory conditions via trade, war and construction.  This lavishly produced game contains tons of wooden game components and a beautiful roll-out vinyl map.  Players produce a score of different commodities to trade with other cities in the hope of creating enough income to fill their capitals with buildings, produce artwork, and fill warehouses with goods.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic28424.jpg
+NUMPLAYERS:
+6
+LENGTH:
+240
+MECHANICS:
+['Dice Rolling']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Cathedral
+DESCRIPTION:
+In Cathedral, each player has a set of pieces of a different color. The pieces are in the shapes of buildings, covering from one to five square units. The first player takes the single neutral Cathedral piece and places it onto the board. Players then alternate placing one of their buildings onto the board until neither player can place another building. Players capture territory by surrounding areas that are occupied by at most one opponent or neutral building. A captured piece is removed and captured territory becomes off-limits to the opponent. The player with the fewest 'square units' of buildings that can't be placed wins.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic181642.jpg
+NUMPLAYERS:
+2
+LENGTH:
+20
+MECHANICS:
+['Area Enclosure', 'Pattern Building', 'Pattern Recognition', 'Tile Placement']
+COMPLEXITY:
+8
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Lords of Creation
+DESCRIPTION:
+In this interesting offering from Warfrog, players become Gods seeking to dominate a world with their followers.  The first part of the game involves constructing the game board, after which players take turns using cards to determine how many new people should appear and what type of terrain they will inhabit.  All tribes start off as barbarians, but soon the calming effect of civilization settles the marauding bands; although civilized tribes score more, they can no longer attack.  What they can do, though, is civilize other players' followers.  Sure it gives opponents more points, but at least those followers won't come after you!
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic374320.jpg
+NUMPLAYERS:
+5
+LENGTH:
+120
+MECHANICS:
+['Modular Board']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: El Caballero
+DESCRIPTION:
+Although referred to as a sequel to El Grande, El Caballero shares few aspects with its namesake, being a fun but intense brain-burner in which players explore and attempt to control the lands and waterways of the New World.
+
+The players are following Columbus by exploring the islands he discovered. Players slowly explore the islands – by picking and placing land tiles that are most favorable to them – and discover wealth in the form of gold and fish. As they learn about the land and sea areas of this new land, they position their caballeros to try to maintain control of the important regions. Castillos give them a measure of protection from others, and ships allow them to establish trade and to fish for food. Success is measured in the size of land and sea areas they control. Their success is measured twice, and in the end these scores are summed and the winner declared.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic1731731.jpg
+NUMPLAYERS:
+4
+LENGTH:
+90
+MECHANICS:
+['Area Control / Area Influence', 'Tile Placement']
+COMPLEXITY:
+13
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Elfenland
+DESCRIPTION:
+Elfenland is a redesign of the original White Wind game Elfenroads.  The game is set in the mythical world of the elves.  A group of fledgling elves (the players) are charged with visiting as many of the twenty Elfencities as they can over the course of 4 rounds.  To accomplish the task they will use various forms of transportation such as Giant Pigs, Elfcarts, Unicorns, Rafts, Magic Clouds, Trollwagons, and Dragons.
+
+Gameplay:  Players begin in the Elf capitol, draw one face down movement tile, and are dealt eight transport cards and a secret 'home' city card that they must reach at the end of the 4th round or lose points for each city space away from 'home' they are at the end of the game. Markers of each player's color are placed in each city on the board and are collected when the player visits that city (each counts as 1 point).
+  
+     The round proceeds in 2 stages.  The first part of the round consists of the drawing of Tiles showing the differing types of transport (except rafts) from a combination of face up and face down tiles (if a player doesn't like the 5 tiles that are face up; they can always draw blind from the face down tiles and hope to get one they need).  These transport tiles need to match the Transportation cards in your hand to use them most effectively.  After each player has a total of 4 tiles they take turns placing a tile on any one of the roads that run between the elf cities.  Only one transport tile may be placed on each road; so players may use other players tiles to travel if they have the matching cards in their hand.  This frequently causes a readjustment of planned travel routes as other players tiles can allow you to move farther or shorter than you had first thought.  Players can play their tiles to help themselves or hinder others by playing a slow mode of transport on another players (perceived) path.
+
+Each mode of transport has certain terrain it can travel through quickly or slowly, and those that it cannot. These are listed on the top of each transportation card by the number terrain symbols.  The number of terrain symbols equals how many matching cards you must play to move across a given tile in a given terrain.  For example, a Magic Cloud tile placed in a mountain would take one Magic cloud card to travel across (1 mountain symbol on card means Magic clouds are fast in mountains). If the same tile was placed on a road in forest terrain it would require 2 Magic Cloud cards to travel that route (2 Forest symbols on card means Magic Clouds are slow in Forest).  Magic Clouds cannot travel in desert terrain at all (no desert symbols on card). All modes of transport are different and Rafts can be used on rivers or lakes without needing tiles. Rafts go slow upstream (2 raft cards needed) and fast downstream (1 card needed).  The small lake requires 1 raft card to travel across and the larger lake requires 2 cards to travel across.  Players may keep one unused transport counter and up to 4 Transportation cards from one round to the next.
+
+The second part of the round begins after all players have finished placing their transportation tiles for the round.  Each player plays his cards and moves his elf-boot around the board collecting his tokens from the cities visited.  If there is a Transport tile on a route and a player has no matching Transportation card he may 'Caravan' across it by playing any 3 Transportation cards from his hand.
+
+As a bit of 'take that' each player has a trouble tile which can be placed next to any transportation tile during the first part of the round.  This counter means that in order to travel that path an additional card of the transport type must be played or 4 cards to 'Caravan'.
+
+Victory: if at the end of round 3 a player has visited all 20 cities he is the winner.  If not the game ends after round 4 when 'Home' cities are revealed and each player subtracts points for each city he is away from his 'home' subtracting that from his collected city tokens.  The person with the highest score wins.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic1798136.jpg
+NUMPLAYERS:
+6
+LENGTH:
+60
+MECHANICS:
+['Card Drafting', 'Hand Management', 'Point to Point Movement', 'Route/Network Building']
+COMPLEXITY:
+10
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Bohnanza
+DESCRIPTION:
+Bohnanza is the first in the Bohnanza family of games and has been published in several different editions.
+
+As card games go, this one is quite revolutionary.  Perhaps its oddest feature is that you cannot rearrange your hand, as you need to play the cards in the order that you draw them.  The cards are colorful depictions of beans in various descriptive poses, and the object is to make coins by planting fields (sets) of these beans and then harvesting them.  To help players match their cards up, the game features extensive trading and deal making.
+
+The original German edition supports 3-5 players.
+
+The newest English version is from Rio Grande Games and it comes with the first edition of the first German expansion included in a slightly oversized box.  One difference in the contents, however, is that bean #22's Weinbrandbohne (Brandy Bean) was replaced by the Wachsbohne, or Wax Bean.  This edition includes rules for up to seven players, like the Erweiterungs-Set, but also adapts the two-player rules of Al Cabohne in order to allow two people to play Bohnanza.
+
+Note: As mentioned above, the Rio Grande Games edition supports more players than the Amigo release, and also sports two-player rules.  You should keep that in mind when perusing the ratings.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic69366.jpg
+NUMPLAYERS:
+7
+LENGTH:
+45
+MECHANICS:
+['Hand Management', 'Set Collection', 'Trading']
+COMPLEXITY:
+13
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Ra
+DESCRIPTION:
+Ra is an auction and set-collection game with an Ancient Egyptian theme.  Each turn players are able to purchase lots of tiles with their bidding tiles (suns).  Once a player has used up his or her suns, the other players continue until they do likewise, which may set up a situation with a single uncontested player bidding on tiles before the end of the round occurs.  Tension builds because the round may end before all players have had a chance to win their three lots for the epoch.  The various tiles either give immediate points, prevent negative points for not having certain types at the end of the round (epoch), or give points after the final round.  The game lasts for three "epochs" (rounds).  The game offers a short learning curve, and experienced players find it both fast-moving and a quick play.
+
+From the Box:
+The game spans 1500 years of Egyptian history in less than an hour!
+The players seek to expand their power and fame and there are many ways to accomplish this: Influencing Pharaohs, Building monuments, Farming on the Nile, Paying homage to the Gods, Advancing the technology and culture of the people. Ra is an auction and set collecting game where players may choose to take risks for great rewards or... And all this is for the glory of the Sun God Ra!
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic2935101.png
+NUMPLAYERS:
+5
+LENGTH:
+60
+MECHANICS:
+['Auction/Bidding', 'Press Your Luck', 'Set Collection']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+NAME: Catan
+DESCRIPTION:
+In Catan (formerly The Settlers of Catan), players try to be the dominant force on the island of Catan by building settlements, cities, and roads. On each turn dice are rolled to determine what resources the island produces. Players collect these resources (cards)—wood, grain, brick, sheep, or stone—to build up their civilizations to get to 10 victory points and win the game.
+
+Setup includes randomly placing large hexagonal tiles (each showing a resource or the desert) in a honeycomb shape and surrounding them with water tiles, some of which contain ports of exchange. Number disks, which will correspond to die rolls (two 6-sided dice are used), are placed on each resource tile. Each player is given two settlements (think: houses) and roads (sticks) which are, in turn, placed on intersections and borders of the resource tiles. Players collect a hand of resource cards based on which hex tiles their last-placed house is adjacent to. A robber pawn is placed on the desert tile.
+
+A turn consists of possibly playing a development card, rolling the dice, everyone (perhaps) collecting resource cards based on the roll and position of houses (or upgraded cities—think: hotels) unless a 7 is rolled, turning in resource cards (if possible and desired) for improvements, trading cards at a port, and trading resource cards with other players. If a 7 is rolled, the active player moves the robber to a new hex tile and steals resource cards from other players who have built structures adjacent to that tile.
+
+Points are accumulated by building settlements and cities, having the longest road and the largest army (from some of the development cards), and gathering certain development cards that simply award victory points. When a player has gathered 10 points (some of which may be held in secret), he announces his total and claims the win.
+
+Catan has won multiple awards and is one of the most popular games in recent history due to its amazing ability to appeal to experienced gamers as well as those new to the hobby.
+
+Die Siedler von Catan was originally published by Kosmos and has gone through multiple editions. It was licensed by Mayfair and has undergone four editions as The Settlers of Catan. In 2015, it was formally renamed Catan to better represent itself as the core and base game of the Catan series. It has been re-published in two travel editions, portable edition and compact edition, as a special gallery edition (replaced in 2009 with a family edition), as an anniversary wooden edition, as a deluxe 3D collector's edition, in the basic Simply Catan, as a beginner version, and with an entirely new theme in Japan and Asia as Settlers of Catan: Rockman Edition. Numerous spin-offs and expansions have also been made for the game.
+
+The Settlers of Catan is the original game in the Catan Series.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic2419375.jpg
+NUMPLAYERS:
+4
+LENGTH:
+120
+MECHANICS:
+['Dice Rolling', 'Hand Management', 'Modular Board', 'Route/Network Building', 'Trading']
+COMPLEXITY:
+10
+------------------------------------------------------------------------------------------------------

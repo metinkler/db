@@ -3,39 +3,39 @@ CREATE TABLE game
 	numPlayers	varchar(20),
 	length		int,
 	price		decimal(6,2),
-	rules		varchar(max),
+	rules		varchar(10485760),
 	complexity	varchar(15),
-	description	varchar(max),
+	description	varchar(10485760),
 	primary key(name));
 
 CREATE TABLE genre
 	(name		varchar(20)		not null unique,
-	description	varchar(max),
+	description	varchar(10485760),
 	primary key(name));
 
 CREATE TABLE publisher
 	(name		varchar(20)		not null unique,
 	address		varchar(100),
 	website		varchar(100),
-	description	varchar(max),
+	description	varchar(10485760),
 	primary key(name));
 
 CREATE TABLE board
 	(name		varchar(20)		not null unique,
 	age			varchar(20),
-	pieces		varchar(100)
+	pieces		varchar(100),
 	primary key(name));
 
 CREATE TABLE dice
 	(name		varchar(20)		not null unique,
 	numDice		varchar(20),
-	type		varchar(20)
+	type		varchar(20), 
 	primary key(name));
 
 CREATE TABLE card
 	(name		varchar(20))	not null unique,
 	numCards	varchar(20),
-	suits		varchar(20)
+	suits		varchar(20),
 	primary key(name));
 
 CREATE TABLE domino
