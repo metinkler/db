@@ -3,7 +3,8 @@ from boardgamegeek import BoardGameGeek
 import psycopg2
 
 # emobrien_gamesdb
-conn = psycopg2.connect("dbname=emobrien_gamesdb user=ncowen password=1023714")
+conn = psycopg2.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
+# conn = psycopg2.connect("dbname=emobrien_gamesdb user=ncowen password=1023714")
 cur = conn.cursor()
 
 def print_to_file(game, output):
@@ -22,8 +23,24 @@ def print_to_file(game, output):
 	print (game.min_age, file=output)
 	print ("------------------------------------------------------------------------------------------------------", file=output)
 
-def game_to_db(game,cur):
-	cur.execute("INSERT INTO game (name, numplayers, length, rules, description, complexity) VALUES (%s,%s,%s,%s,%s,%s);", (game.name, game.max_players, game.playing_time, game.mechanics, game.description, game.min_age))
+def game_exists(game, cur):
+	cur.execute("SELECT * FROM game WHERE name = %s", (game.name))
+	return cur.fetchall
+
+def game_to_db(game,cur,conn):
+	try: 
+		# if not game_exists(game,cur):
+		data_tuple = (game.max_players, game.playing_time, game.mechanics, game.description, game.min_age, game.name)
+		cur.execute("INSERT INTO game (numplayers, length, rules, description, complexity, name) VALUES (%s,%s,%s,%s,%s,%s);", data_tuple)
+		
+	except:
+		try: 
+			cur.execute("UPDATE game SET numplayers = %s, length = %s, rules = %s, description = %s, complexity = %s WHERE name = %s;", data_tuple)
+			
+		except:
+			pass
+
+
 
 def print_game(game):
 	print ("NAME: " + game.name)
@@ -55,7 +72,8 @@ for game_id in game_ids:
 		game = bgg.game(game_id = game_id)
 		print_game(game)
 		print_to_file(game, output)
-		game_to_db(game,cur)
+		game_to_db(game,cur,conn)
+		conn.commit()
 
 cur.close()
 conn.close()
