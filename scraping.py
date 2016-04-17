@@ -119,11 +119,22 @@ def getDescription(url):
 	print url
 	page = getPage(url)
 
-	tags = page.xpath('//p/text()')
+	tags = page.xpath('//div[@class="mainContent clearfix"]')
+	# tags now inclue basically everything in the main content
 	for element in tags:
-		desc += element
-		#for text in element.iterdescendants():
-		#	desc += text.text
+		#desc += element.text
+
+		if (element.attrib.get('class') != "tlcontents top3"):
+			for text in element.iterdescendants():
+				if (text.attrib.get('class') == "tlcontents top3"):
+					print "AGHHHHHH"
+			
+				else:
+					if (text.text != None):
+						print text.text
+					if (text.tail != None):
+						print text.tail
+	
 		desc += "\n"
 		
 	
@@ -145,6 +156,7 @@ def getDescription(url):
 	elif len(desc) > 25000:
 		difficulty = 6
 
+	print(desc)
 	print(difficulty)
 	descInfo = [desc, difficulty]
 
