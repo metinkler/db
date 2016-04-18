@@ -28,7 +28,7 @@ def print_to_file(game, output):
 def game_to_db(game,cur,conn):
 	try: 
 		data_tuple = (game.playing_time, game.description, game.min_players, game.max_players, game.image, game.thumbnail, game.year, game.min_age, game.users_owned, game.rating_average, game.id, game.name)
-		print (data_tuple)
+		# print (data_tuple)
 		cur.execute("INSERT INTO board (length, synopsis, min_players, max_players, image, thumbnail, year_est, min_age, users_owned, rating, bgg_id, name) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", data_tuple)
 	except:
 		try: 
@@ -51,10 +51,10 @@ for game_id in game_ids:
 		game_id = int(game_id)
 	except: 
 		continue
-	if (game_id < 50):
+	if (game_id > 50):
 		game = bgg.game(game_id = game_id)
 		print_game(game)
-		print_to_file(game, output)
+		# print_to_file(game, output)
 		game_to_db(game,cur,conn)
 		# conn.commit()
 
