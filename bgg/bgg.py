@@ -3,7 +3,9 @@ from boardgamegeek import BoardGameGeek
 import psycopg2
 
 # emobrien_gamesdb
-conn = psycopg2.connect("dbname=emobrien_gamesdb user=ncowen password=1023714")
+conn = psycopg2.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
+conn.autocommit = True
+# conn = psycopg2.connect("dbname=emobrien_gamesdb user=ncowen password=1023714")
 cur = conn.cursor()
 
 def print_to_file(game, output):
@@ -22,24 +24,17 @@ def print_to_file(game, output):
 	print (game.min_age, file=output)
 	print ("------------------------------------------------------------------------------------------------------", file=output)
 
-def game_to_db(game,cur):
-	cur.execute("INSERT INTO game (name, numplayers, length, rules, description, complexity) VALUES (%s,%s,%s,%s,%s,%s);", (game.name, game.max_players, game.playing_time, game.mechanics, game.description, game.min_age))
+def game_to_db(game,cur,conn):
+	try: 
+		data_tuple = (game.playing_time, game.description, game.min_players, game.max_players, game.image, game.thumbnail, game.year, game.min_age, game.users_owned, game.rating_average, game.id, game.name)
+		cur.execute("INSERT INTO board (length, synopsis, min_players, max_players, image, thumbnail, year_est, min_age, users_owned, rating, bgg_id, name) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT UPDATE;", data_tuple)
+	except:
+		cur.execute("UPDATE board SET length = %s, synopsis = %s, min_players = %s, max_players = %s, image = %s, thumbnail = %s, year_est = %s, min_age = %s, users_owned = %s, rating = %s, bgg_id = %s WHERE name = %s;", data_tuple)
+		except:
+			pass
 
 def print_game(game):
-	print ("NAME: " + game.name)
-	print ("DESCRIPTION:")
-	print (game.description)
-	print ("IMAGE URL:")
-	print (game.image)
-	print ("NUMPLAYERS:")
-	print (game.max_players)
-	print ("LENGTH:")
-	print (game.playing_time)
-	print ("MECHANICS:")
-	print (game.mechanics)
-	print ("COMPLEXITY:")
-	print (game.min_age)
-	print ("------------------------------------------------------------------------------------------------------", file=output)
+	print ("Inserted " + game.name )
 
 bgg = BoardGameGeek()
 output = open('output.txt', 'w')
@@ -54,8 +49,8 @@ for game_id in game_ids:
 	if (game_id < 50):
 		game = bgg.game(game_id = game_id)
 		print_game(game)
-		print_to_file(game, output)
-		game_to_db(game,cur)
+		# print_to_file(game, output)
+		game_to_db(game,cur,conn)
 
 cur.close()
 conn.close()
