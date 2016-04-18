@@ -1,6 +1,5 @@
 CREATE TABLE game
 	(name 		varchar(256) 	not null unique,
-	numPlayers	varchar(256),
 	length		int,
 	synopsis    varchar(10485760),
 	complexity	varchar(15),
@@ -11,12 +10,12 @@ CREATE TABLE game
 
 
 CREATE TABLE board
-    (alt_names   varchar(10000),
+    (bgg_id     int,
+    alt_names   varchar(10000),
     image       varchar(10000),
     thumbnail   varchar(10000),
     year_est    int,
     min_age     int,
-    max_age     int, 
     users_owned int,
     rating      real,  
 	primary key(name)) INHERITS (game);
