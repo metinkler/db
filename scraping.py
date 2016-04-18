@@ -87,28 +87,45 @@ def parseHTML(tree):
 				for subitem in item.iterdescendants():
 					if subitem.text != None:
 						quantity.append(subitem.text.strip())
-
-
+		
+	
+		# building strings from given lists`
 		playerString = ""
+		nameString = ""
+		reference = ""
+		quantityString = ""
+		designString = ""
+		foundSee = False
+
 		for item in players:
 			playerString += str(item) + " "
 			
-		nameString = ""
 		for item in name:
-			nameString += str(item) + " "
+			if foundSee == False:
+				if item == "see":
+					foundSee = True
+				else:
+					nameString += str(item) + " "
+			else:
+				reference += item + " " 
 
-		quantityString = ""
 		for item in quantity:
 			quantityString += str(item) + " "
 
-		designString = ""
 		for item in design:
 			designString += item + " "
 
+		# cleaning strings
+		nameString = nameString[:-1]
+		reference = reference[:-1]
+		playerString = playerString[:-1]
+		designString = designString[:-1]
+		quantityString = quantityString[:-1]
+		link = link[:-1]
 
-		gameInfo = [nameString, playerString, designString, quantityString, link]	
+		gameInfo = [nameString, reference,  playerString, designString, quantityString, link]	
 		allGames.append(gameInfo)
-		#print(gameInfo)
+	#	print(gameInfo)
 
 	return allGames
 
@@ -118,13 +135,34 @@ def getDescription(url):
 	desc = ""
 	print url
 	page = getPage(url)
+	badClass = False
 
-	tags = page.xpath('//p/text()')
+	tags = page.xpath('//div[@class="mainContent clearfix"]')
+	# tags now inclue basically everything in the main content
 	for element in tags:
-		desc += element
-		#for text in element.iterdescendants():
-		#	desc += text.text
-		desc += "\n"
+		#desc += element.text
+		
+		for text in element.iterdescendants():
+		
+			if text.tag == "h1":
+				badClass = True
+
+			elif text.tag == "h2":	
+				badClass = False
+
+			else:
+				if (badClass == False):
+					if (text.text != None and text.text != " InstanceBeginEditable name=\"MainContent\" " and text.text != " InstanceEndEditable " and text.text != " end #mainContent "):
+						desc += text.text
+
+					if (text.tail != None):
+						desc += text.tail
+
+					if text.tag != "strong" and text.tag != "a":
+						desc += "\n"
+	
+
+#	print(desc)
 		
 	
 	if len(desc) < 1000:
@@ -145,7 +183,8 @@ def getDescription(url):
 	elif len(desc) > 25000:
 		difficulty = 6
 
-	print(difficulty)
+#	print(desc)
+#	print(difficulty)
 	descInfo = [desc, difficulty]
 
 	return descInfo
@@ -175,7 +214,7 @@ def insertCardGame(game):
 	difficulty = getDifficulty(game[4])
 
 	# do we need a loop here? An entirely new entry if you're changing like jst the numCards value? 
-	curr.execute("INSERT INTO card(name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
+	curr.execute("INSERT INTO card (name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
 	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, description) VALUES (%s \
 %s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
 
@@ -194,5 +233,6 @@ if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
-	getDescription("https://www.pagat.com"+listOfGames[2][4])
+#	getDescription("https://www.pagat.com"+listOfGames[2][5])
+	insertCardGame(listOfGames[2])
 	#buildTables(listOfGames)
