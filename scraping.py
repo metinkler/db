@@ -87,28 +87,45 @@ def parseHTML(tree):
 				for subitem in item.iterdescendants():
 					if subitem.text != None:
 						quantity.append(subitem.text.strip())
-
-
+		
+	
+		# building strings from given lists`
 		playerString = ""
+		nameString = ""
+		reference = ""
+		quantityString = ""
+		designString = ""
+		foundSee = False
+
 		for item in players:
 			playerString += str(item) + " "
 			
-		nameString = ""
 		for item in name:
-			nameString += str(item) + " "
+			if foundSee == False:
+				if item == "see":
+					foundSee = True
+				else:
+					nameString += str(item) + " "
+			else:
+				reference += item + " " 
 
-		quantityString = ""
 		for item in quantity:
 			quantityString += str(item) + " "
 
-		designString = ""
 		for item in design:
 			designString += item + " "
 
+		# cleaning strings
+		nameString = nameString[:-1]
+		reference = reference[:-1]
+		playerString = playerString[:-1]
+		designString = designString[:-1]
+		quantityString = quantityString[:-1]
+		link = link[:-1]
 
-		gameInfo = [nameString, playerString, designString, quantityString, link]	
+		gameInfo = [nameString, reference,  playerString, designString, quantityString, link]	
 		allGames.append(gameInfo)
-		#print(gameInfo)
+	#	print(gameInfo)
 
 	return allGames
 
@@ -127,13 +144,15 @@ def getDescription(url):
 		if (element.attrib.get('class') != "tlcontents top3"):
 			for text in element.iterdescendants():
 				if (text.attrib.get('class') == "tlcontents top3"):
-					print "AGHHHHHH"
-			
+					badClass = True 
+					
 				else:
 					if (text.text != None):
 						print text.text
+					#	pass
 					if (text.tail != None):
 						print text.tail
+					#	pass
 	
 		desc += "\n"
 		
@@ -156,8 +175,8 @@ def getDescription(url):
 	elif len(desc) > 25000:
 		difficulty = 6
 
-	print(desc)
-	print(difficulty)
+#	print(desc)
+#	print(difficulty)
 	descInfo = [desc, difficulty]
 
 	return descInfo
@@ -206,5 +225,5 @@ if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
-	getDescription("https://www.pagat.com"+listOfGames[2][4])
+	getDescription("https://www.pagat.com"+listOfGames[2][5])
 	#buildTables(listOfGames)

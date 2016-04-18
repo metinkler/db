@@ -2,14 +2,18 @@
 # Main python script to prompt user for input and query the database
 
 import sys
+import psycopg2
 
 if __name__ == "__main__":
 	
 
 	print("Welcome to our database!")
 	
-	status = ""	
-
+	status = ""		
+	
+	conn = psycopg.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
+	cur = conn.cursor()
+	
 	while status != "q":
 
 		gameType = raw_input("What type of game do you want to play? \n [ Board | Dice | Card | Domino | RPG ] \n" )
@@ -24,7 +28,8 @@ if __name__ == "__main__":
 			pieces = raw_input("What pieces do you have?\n [ ] \n")
 
 			# query here with the info we've gotten
-	
+			cur.execute("SELECT name FROM board WHERE age=%, pieces = %, numPlayers = %;" % (agea
+			
 			print("Returning %s game with %d people playing, for age %s with the following pieces available: %s" % (gameType, numPlayers, age, pieces))
 		
 		if gameType == "Dice":
@@ -33,7 +38,7 @@ if __name__ == "__main__":
 			numDice = int(raw_input("How many dice do you have? "))
 	
 			#query here
-
+		
 			print("Returning %s game with %d people playing, with %d %s." % (gameType, numPlayers, numDice, dice))
 
 		if gameType == "Card":
