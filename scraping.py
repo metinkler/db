@@ -135,26 +135,34 @@ def getDescription(url):
 	desc = ""
 	print url
 	page = getPage(url)
+	badClass = False
 
 	tags = page.xpath('//div[@class="mainContent clearfix"]')
 	# tags now inclue basically everything in the main content
 	for element in tags:
 		#desc += element.text
+		
+		for text in element.iterdescendants():
+		
+			if text.tag == "h1":
+				badClass = True
 
-		if (element.attrib.get('class') != "tlcontents top3"):
-			for text in element.iterdescendants():
-				if (text.attrib.get('class') == "tlcontents top3"):
-					badClass = True 
-					
-				else:
-					if (text.text != None):
-						print text.text
-					#	pass
+			elif text.tag == "h2":	
+				badClass = False
+
+			else:
+				if (badClass == False):
+					if (text.text != None and text.text != " InstanceBeginEditable name=\"MainContent\" " and text.text != " InstanceEndEditable " and text.text != " end #mainContent "):
+						desc += text.text
+
 					if (text.tail != None):
-						print text.tail
-					#	pass
+						desc += text.tail
+
+					if text.tag != "strong" and text.tag != "a":
+						desc += "\n"
 	
-		desc += "\n"
+
+#	print(desc)
 		
 	
 	if len(desc) < 1000:
@@ -225,5 +233,6 @@ if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
-	getDescription("https://www.pagat.com"+listOfGames[2][5])
+#	getDescription("https://www.pagat.com"+listOfGames[2][5])
+	insertCardGame(listOfGames[2])
 	#buildTables(listOfGames)
