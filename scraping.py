@@ -214,7 +214,7 @@ def insertCardGame(game):
 	difficulty = getDifficulty(game[4])
 
 	# do we need a loop here? An entirely new entry if you're changing like jst the numCards value? 
-	curr.execute("INSERT INTO card(name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
+	curr.execute("INSERT INTO card (name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
 	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, description) VALUES (%s \
 %s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
 
