@@ -8,7 +8,6 @@ CREATE TABLE game
     max_players int,
 	primary key(name));
 
-
 CREATE TABLE board
     (bgg_id     int,
     alt_names   varchar(10000),
