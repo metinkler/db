@@ -1,0 +1,96 @@
+NAME: Die Macher
+DESCRIPTION:
+Die Macher is a game about seven sequential political races in different regions of Germany. Players are in charge of national political parties, and must manage limited resources to help their party to victory. The winning party will have the most victory points after all the regional elections. There are four different ways of scoring victory points. First, each regional election can supply one to eighty victory points, depending on the size of the region and how well your party does in it. Second, if a party wins a regional election and has some media influence in the region, then the party will receive some media-control victory points. Third, each party has a national party membership which will grow as the game progresses and this will supply a fair number of victory points. Lastly, parties score some victory points if their party platform matches the national opinions at the end of the game.
+
+The 1986 edition featured 4 parties from the old West Germany and supported 3-4 players. The 1997 edition supports up to 5 players in the re-united Germany and updated several features of the rules as well.  The 2006 edition also supports up to 5 players and adds a shorter 5 round variant and additional rules updates by the original designer.
+
+Die Macher is #1 in the Valley Games Classic Line
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic159509.jpg
+NUMPLAYERS:
+5
+LENGTH:
+240
+MECHANICS:
+['Area Control / Area Influence', 'Auction/Bidding', 'Dice Rolling', 'Hand Management', 'Simultaneous Action Selection']
+COMPLEXITY:
+14
+------------------------------------------------------------------------------------------------------
+NAME: Dragonmaster
+DESCRIPTION:
+Dragonmaster is a trick-taking card game based on an older game called Coup d'etat. Each player is given a supply of plastic gems, which represent points. Each player will get to be the dealer for five different hands, with slightly different goals for each hand. After all cards have been dealt out, the dealer decides which hand best suits his or her current cards, and the other players are penalized points (in the form of crystals) for taking certain tricks or cards. For instance, if "first" or "last" is called, then a player is penalized for taking the first or last tricks. All players will get a chance to be dealer for five hands, but other players can steal this opportunity by taking all of the tricks during certain hands. At the end, the biggest pile of gems wins the game
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic184174.jpg
+NUMPLAYERS:
+4
+LENGTH:
+30
+MECHANICS:
+['Trick-taking']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+NAME: Samurai
+DESCRIPTION:
+Part of the Knizia tile-laying trilogy, Samurai is set in medieval Japan. Players compete to gain the favor of three factions: samurai, peasants, and priests, which are represented by helmet, rice paddy, and Buddha tokens scattered about the board, which features the islands of Japan. The competition is waged through the use of hexagonal tiles, each of which help curry favor of one of the three factions — or all three at once! Players can make lightning-quick strikes with horseback ronin and ships or approach their conquests more methodically. As each token (helmets, rice paddies, and Buddhas) is surrounded, it is awarded to the player who has gained the most favor with the corresponding group.
+
+Gameplay continues until all the symbols of one type have been removed from the board or four tokens have been removed from play due to a tie for influence.
+
+At the end of the game, players compare captured symbols of each type, competing for majorities in each of the three types. Ties are not uncommon and are broken based on the number of other, "non-majority" symbols each player has collected.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic2571921.png
+NUMPLAYERS:
+4
+LENGTH:
+60
+MECHANICS:
+['Area Control / Area Influence', 'Hand Management', 'Set Collection', 'Tile Placement']
+COMPLEXITY:
+10
+------------------------------------------------------------------------------------------------------
+NAME: Tal der Könige
+DESCRIPTION:
+When you see the triangular box and the luxurious, large blocks, you can tell this game was designed to be beautiful as well as functional.  The object of the game is to build pyramids out of the different colored blocks.  A pyramid scores more points when it's made from a few colors, but it's much harder to consistently outbid the other players for the necessary blocks.  The game is over when the Pharoah's Pyramid in the center is completed, which is built using all the blocks that the players don't use during the course of the game.
+
+Final round 1990 Hippodice Spieleautorenwettbewerb.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic285299.jpg
+NUMPLAYERS:
+4
+LENGTH:
+60
+MECHANICS:
+['Action Point Allowance System', 'Area Control / Area Influence', 'Auction/Bidding', 'Set Collection']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
+NAME: Acquire
+DESCRIPTION:
+This Sid Sackson classic has taken many different forms over the years depending on the publisher.  Each player strategically invests in businesses, trying to retain a majority of stock.  As the businesses grow with tile placements, they also start merging, giving the majority stockholders of the acquired business sizable bonuses, which can then be used to reinvest into other chains.  All of the investors in the acquired company can then cash in their stocks for current value or trade them 2-for-1 for shares of the newer, larger business.  The game is a race to acquire the greatest wealth.
+
+Some versions of the 3M bookshelf edition included rules for a 2-player variant.
+
+The original version is part of the 3M Bookshelf Series.
+
+Note: many books and websites list this as a 1962 publication. This is incorrect; information from Sid Sackson's diaries, correspondence, and royalty statements prove that it was published in 1964.
+
+
+IMAGE URL:
+http://cf.geekdo-images.com/images/pic342163.jpg
+NUMPLAYERS:
+6
+LENGTH:
+90
+MECHANICS:
+['Hand Management', 'Stock Holding', 'Tile Placement']
+COMPLEXITY:
+12
+------------------------------------------------------------------------------------------------------
