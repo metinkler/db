@@ -9,17 +9,6 @@ CREATE TABLE game
     max_players int,
 	primary key(name));
 
-CREATE TABLE genre
-	(name		varchar(256)		not null unique,
-	description	varchar(10485760),
-	primary key(name));
-
-CREATE TABLE publisher
-	(name		varchar(256)		not null unique,
-	address		varchar(100),
-	website		varchar(100),
-	description	varchar(10485760),
-	primary key(name));
 
 CREATE TABLE board
 	(name		varchar(256)		not null unique,
@@ -43,6 +32,26 @@ CREATE TABLE domino
     num_players     varchar(100),
 	primary key(name));
 
+CREATE TABLE genre
+	(name		varchar(256)		not null unique,
+	primary key(name));
+
+CREATE TABLE publisher
+	(name		varchar(256)		not null unique,
+	primary key(name));
+
+CREATE TABLE mechanic
+	(name		varchar(256)		not null unique,
+	primary key(name));
+
+CREATE TABLE designer
+	(name		varchar(256)		not null unique,
+	primary key(name));
+
+CREATE TABLE artist
+	(name		varchar(256)		not null unique,
+	primary key(name));
+
 CREATE TABLE gameGenre
 	(gameName	varchar(256)		not null,
 	genreName	varchar(256)		not null,
@@ -56,3 +65,24 @@ CREATE TABLE gamePublisher
 	primary key(gameName, pubName),
 	foreign key(gameName) references game(name),
 	foreign key(pubName) references publisher(name));
+
+CREATE TABLE gameMechanic
+	(gameName	varchar(256)		not null,
+	mechName		varchar(256)		not null,
+	primary key(gameName, mechName),
+	foreign key(gameName) references game(name),
+	foreign key(mechName) references mechanic(name));
+
+CREATE TABLE gameDesigner
+	(gameName	varchar(256)		not null,
+	desName		varchar(256)		not null,
+	primary key(gameName, desName),
+	foreign key(gameName) references game(name),
+	foreign key(desName) references designer(name));
+
+CREATE TABLE gameArtist
+	(gameName	varchar(256)		not null,
+	artName		varchar(256)		not null,
+	primary key(gameName, artName),
+	foreign key(gameName) references game(name),
+	foreign key(artName) references artist(name));
