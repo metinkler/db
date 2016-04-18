@@ -31,13 +31,18 @@ if __name__ == "__main__":
 			cur.execute("SELECT name FROM board  WHERE min_age <= %s AND %s BETWEEN min_players AND max_players;" % (minAge, int(numPlayers)))  
 			answer = cur.fetchall()
 			print(answer)
+			print
 
 			desc = raw_input("Select a game for further description , or press q to quit query: ")
+			print
 
-			if (desc != "q"):
-				cur.execute("SELECT synopsis FROM board WHERE name = %s AND min_age <= %s AND %s BETWEEN min_players AND max_players;" % (desc, minAge, int(numPlayers)))
+			while (desc != "q"):
+				cur.execute("SELECT synopsis FROM board WHERE name = '%s' AND min_age <= %s AND %s BETWEEN min_players AND max_players;" % (desc, minAge, int(numPlayers)))
 				answer = cur.fetchall()
-				print(answer)
+				print(answer[0][0])
+
+				desc = raw_input("Select a game for further description, or press q to quit query: ")
+				print
 
 						
 			
