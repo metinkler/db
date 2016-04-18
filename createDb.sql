@@ -3,7 +3,6 @@ CREATE TABLE game
 	length		int,
 	synopsis    	varchar(10485760),
 	complexity	varchar(15),
-	description	varchar(10485760),
 	min_players 	int,
 	max_players 	int,
 	primary key(name));
