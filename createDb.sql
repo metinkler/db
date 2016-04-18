@@ -1,6 +1,5 @@
 CREATE TABLE game
 	(name 		varchar(256) 	not null unique,
-	length		int,
 	synopsis    	varchar(10485760),
 	complexity	varchar(15),
 	min_players 	int,
@@ -11,6 +10,7 @@ CREATE TABLE board
     	(bgg_id     	int,
 	alt_names   	varchar(10000),
     	image       	varchar(10000),
+	length		int,
     	thumbnail   	varchar(10000),
     	year_est    	int,
     	min_age     	int,
