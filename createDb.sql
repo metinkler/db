@@ -1,33 +1,35 @@
-CREATE TABLE game
-	(name 		varchar(256) 	not null unique,
-	synopsis    	varchar(10485760),
+create table game
+	(name 		    varchar(256) 	not null unique,
+	synopsis    	text,
 	complexity	varchar(15),
 	min_players 	int,
 	max_players 	int,
 	primary key(name));
 
 CREATE TABLE board
-    	(bgg_id     	int,
-	alt_names   	varchar(10000),
-    	image       	varchar(10000),
-	length		int,
-    	thumbnail   	varchar(10000),
-    	year_est    	int,
-    	min_age     	int,
-    	users_owned 	int,
-    	rating      	real,  
-	primary key(name)) INHERITS (game);
+    (bgg_id     	int,
+    alt_names   	text,
+    image       	text, 
+    length          int,
+    thumbnail   	text,
+    year_est    	int,
+    min_age     	int,
+    users_owned 	int,
+    rating      	real,  
+    primary key(name)) INHERITS (game);
 
 CREATE TABLE card
 	(numCards	varchar(256),
 	suits		varchar(256),
-    	num_players varchar(100),
+	refers	varchar(256),
+    num_players varchar(100),
 	primary key(name)) INHERITS (game);
 
 CREATE TABLE domino
-	(numDom		varchar(256),
-	addMaterials	varchar(100),
-    	num_players     varchar(100),
+	(numDom		    varchar(256),
+	domino_type 	varchar(100),
+	refers	varchar(256),
+    num_players     varchar(100),
 	primary key(name)) INHERITS (game);
 
 CREATE TABLE genre
