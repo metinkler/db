@@ -3,6 +3,7 @@
 
 import sys
 import psycopg2
+import csv
 
 if __name__ == "__main__":
 	
@@ -16,6 +17,17 @@ if __name__ == "__main__":
 
 
 	while status != "q":
+
+		if "Add" == raw_input("Would you like to choose a game or add a game? \n [ Choose | Add ] \n") :
+			print ("Great! Please provide the file path to a csv of the following form (no header please):")
+			file_name = raw_input("length, synopsis, min_players, max_players, image, thumbnail, year_est, min_age, users_owned, rating, bgg_id, name\n")
+			data_list = [tuple(line.rstrip('\n').split(",")) for line in open(file_name, 'r')]
+			for data_tuple in data_list: 
+				cur.execute("INSERT INTO board (length, synopsis, min_players, max_players, image, thumbnail, year_est, min_age, users_owned, rating, bgg_id, name) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", data_tuple)
+				conn.commit()
+			print("Success! Thank you :)")
+			quit()
+
 
 		gameType = raw_input("What type of game do you want to play? \n [ Board |  Card | Domino ] \n" )
 
