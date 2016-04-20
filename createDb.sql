@@ -1,7 +1,7 @@
 create table game
-	(name			varchar(256) 	not null unique,
+	(name 		    varchar(256) 	not null unique,
 	synopsis    	text,
-	complexity		varchar(15),
+	complexity	varchar(15),
 	min_players 	int,
 	max_players 	int,
 	primary key(name));
@@ -9,7 +9,7 @@ create table game
 CREATE TABLE board
     (bgg_id     	int,
     alt_names   	text,
-    image			text, 
+    image       	text, 
     length          int,
     thumbnail   	text,
     year_est    	int,

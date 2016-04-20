@@ -97,6 +97,15 @@ def parseHTML(tree):
 		designString = ""
 		foundSee = False
 
+
+		if len(players) > 0:
+			minPlayers = int(players[0])
+			maxPlayers = int(players[-1])
+		else:
+			minPlayers = 0
+			maxPlayers = 0
+
+
 		for item in players:
 			playerString += str(item) + " "
 			
@@ -123,9 +132,12 @@ def parseHTML(tree):
 		quantityString = quantityString[:-1]
 		link = link[:-1]
 
-		gameInfo = [nameString, reference,  playerString, designString, quantityString, link]	
+		gameInfo = [nameString, reference, playerString, designString, quantityString, link, minPlayers, maxPlayers]	
 		allGames.append(gameInfo)
 	#	print(gameInfo)
+
+	allGames.pop(0)
+	allGames.pop(0)
 
 	return allGames
 
@@ -208,31 +220,37 @@ def buildTables(allGames):
 		print
 
 def insertCardGame(game):
-	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
+	conn = psycopg2.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
+	conn.autocommit = True
 	cur = conn.cursor()
 
-	difficulty = getDifficulty(game[4])
+	difficulty = getDescription("https://www.pagat.com"+game[5])
 
-	# do we need a loop here? An entirely new entry if you're changing like jst the numCards value? 
-	curr.execute("INSERT INTO card (name, numCards, suits) VALUES (%s, %s, %s)", (game[0],game[3],game[2]))
-	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, description) VALUES (%s \
-%s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
+#	print ("Name is: %s \n Synopsis is: \n %s \n Complexity is: %s \n, Min_players is: %s \n Max_players is: %s \n, numCards is: %s \n, Suits is: %s \n, Num players is: %s \n" %  (game[0], difficulty[0], difficulty[1], game[6], game[7], game[4], game[3], game[2]))
+
+	try:
+		curr.execute("INSERT INTO card (name, synopsis, complexity, min_players, max_players,  numCards, suits, numPlayers) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)" % (game[0], difficulty[0], difficulty[1], game[6], game[7],  game[4], game[3], game[2]))
+	except:
+		try:
+			curr.execute("UPDATE card SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numCards = %s, suits = %s, numPlayers = %s;" % (difficulty[0], difficulty[1], game[6], game[7], game[4], game[3], game[2]))
+		except:
+			pass
+
 
 def insertDominoGame(game):
 	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
 	cur = conn.cursor()
 	
-	difficulty = getDifficulty(game[4])
+	difficulty = getDescription(game[4])
 
-	curr.execute("INSERT INTO domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
-	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, descrition) VALUES (%s \
-%s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
+#	curr.execute("INSERT INTO domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
+#	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, descrition) VALUES (%s %s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
 
 
 if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
-#	getDescription("https://www.pagat.com"+listOfGames[2][5])
-	insertCardGame(listOfGames[2])
+	#getDescription("https://www.pagat.com"+listOfGames[2][5])
+	insertCardGame(listOfGames[0])
 	#buildTables(listOfGames)
