@@ -1,6 +1,6 @@
 rm ~/workspace/galactic-data/cran/2016-04-20T14-30-00Z/*
 git commit -am "removed data"
-git push origin master
+git push origin gh-pages
 cp links.bin ~/workspace/galactic-data/cran/2016-04-20T14-30-00Z
 cp labels.json ~/workspace/galactic-data/cran/2016-04-20T14-30-00Z
 cp data/positions.bin ~/workspace/galactic-data/cran/2016-04-20T14-30-00Z
