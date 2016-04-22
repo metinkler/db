@@ -8,25 +8,22 @@ g.addNode('world');
 
 g.addLink('space', 'bar');
 
-max = 10000
-
-for (i= 0; i < max; i++){
-	g.addNode(i, {
-	  	url: 'on',
-	  	ip: '127.0.0.1'
-	});
+function getLabel(id){
+	return id + "<>" + "this is a long game title" + "<>" + "https://cf.geekdo-images.com/images/pic934018_md.jpg";
 }
 
+max = 10000
+
 for (i = 0; i < max; i++){
-	g.addLink(i, i+1);
+	g.addLink(getLabel(i), getLabel(i+1));
 }
 
 for (i = 0; i < max; i += 3){
-	g.addLink(i, i+3);
+	g.addLink(getLabel(i), getLabel(i+3));
 }
 
 for (i = 0; i < max; i += 8){
-	g.addLink(i, i+8);
+	g.addLink(getLabel(i), getLabel(i+8));
 }
 
 var createLayout = require('ngraph.offline.layout');

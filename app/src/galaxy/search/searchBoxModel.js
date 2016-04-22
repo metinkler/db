@@ -8,6 +8,27 @@ export default searchBoxModel();
 
 const searchResultsWindowId = 'search-results';
 
+function fixSearchResults(searchResults){
+  var i;
+  var boardname;
+  for (i = 0; i < Math.min(20, searchResults.length); i++){
+    boardname = searchResults[i].name.split("<>")[1];
+    if (boardname && boardname.length) {
+      searchResults[i].name = boardname;
+    }
+  }
+  return searchResults;
+}
+
+function print_res(res){
+  var i;
+  for (i = 0; i < 10; i++){
+    if (res && res.length){
+      console.log(res[i].name.split("<>")[1])
+    }
+  }
+}
+
 function searchBoxModel() {
   let api = {
     search: search,
@@ -20,6 +41,7 @@ function searchBoxModel() {
     if (newText && newText[0] === ':') return; // processed in submit
 
     var searchResults = scene.find(newText);
+    searchResults = fixSearchResults(searchResults);
     var searchResultWindowViewModel = new SearchResultWindowViewModel(searchResults);
 
     if (searchResults.length) {

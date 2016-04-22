@@ -2,6 +2,10 @@ import React from 'react';
 export default commonPackageTemplate;
 
 function commonPackageTemplate(model, link, linkText) {
+  var boardgamedata = linkText.split("<>")
+  link = 'https://boardgamegeek.com/boardgame/' + boardgamedata[0];
+  linkText = boardgamedata[1];
+  var thumbnail = boardgamedata[2];
   return (
     <div className='container-fluid row'>
       <div className='hidden-xs'>
@@ -29,7 +33,7 @@ function commonPackageTemplate(model, link, linkText) {
         <div className='row info-block'>
           <div className='col-xs-6 no-overflow'><a href={link} target="_blank">{linkText}</a></div>
           <div id={model.id} className='in-degree col-xs-3'>{model.inDegree}</div>
-          <div id={model.id} className='out-degree col-xs-3'>{model.outDegree}</div>
+          {/* <div id={model.id} className='out-degree col-xs-3'>{model.outDegree}</div> */}
         </div>
       </div>
     </div>

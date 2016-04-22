@@ -31,7 +31,7 @@ function template(props) {
         <div className='row info-block'>
           <div className='col-xs-6 no-overflow'><h5>{model.name}</h5></div>
           <div id={model.id} className='in-degree col-xs-3'>{model.inDegree}</div>
-          <div id={model.id} className='out-degree col-xs-3'>{model.outDegree}</div>
+          {/*<div id={model.id} className='out-degree col-xs-3'>{model.outDegree}</div>*/}
         </div>
       </div>
     </div>
