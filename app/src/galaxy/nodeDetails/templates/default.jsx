@@ -17,12 +17,14 @@ function template(props) {
           </div>
           <div className="row small">{model.inDegreeLabel}</div>
         </div>
+        {/*
         <div className="col-xs-3">
           <div className="row">
             <h2 id={model.id} className='out-degree'>{model.outDegree}</h2>
           </div>
           <div className="row small">{model.outDegreeLabel}</div>
         </div>
+        */}
       </div>
 
       <div className='visible-xs-block'>

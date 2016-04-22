@@ -23,6 +23,7 @@ function getDegreeName(connectionType, count) {
     case 'bower':
     case 'cpan':
     case 'cran':
+      return publisherName(connectionType, count);
     case 'composer':
     case 'rubygems':
     case 'gosearch':
@@ -36,6 +37,13 @@ function getDegreeName(connectionType, count) {
       return followerName(connectionType, count);
   }
   return connectionType === 'in' ? 'indegree' : 'outdegree';
+}
+
+function publisherName(connectionType, count) {
+  // if (connectionType === 'in') {
+  //   return count === 1 ? 'dependent' : 'dependents';
+  // }
+  return count === 1 ? 'publisher' : 'publishers';
 }
 
 function dependencyName(connectionType, count) {

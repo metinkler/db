@@ -10,6 +10,13 @@ g.addLink('space', 'bar');
 
 max = 10000
 
+for (i= 0; i < max; i++){
+	g.addNode(i, {
+	  	url: 'on',
+	  	ip: '127.0.0.1'
+	});
+}
+
 for (i = 0; i < max; i++){
 	g.addLink(i, i+1);
 }

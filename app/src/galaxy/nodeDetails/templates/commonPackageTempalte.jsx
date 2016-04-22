@@ -5,7 +5,7 @@ function commonPackageTemplate(model, link, linkText) {
   return (
     <div className='container-fluid row'>
       <div className='hidden-xs'>
-        <div className='col-xs-6'>
+        <div className='col-xs-9'>
           <a href={link} target='_blank'>
             <h4 title={linkText}>{linkText}</h4>
           </a>
@@ -16,12 +16,14 @@ function commonPackageTemplate(model, link, linkText) {
           </div>
           <div className="row small">{model.inDegreeLabel}</div>
         </div>
+        {/*
         <div className="col-xs-3">
           <div className="row">
             <h2 id={model.id} className='out-degree'>{model.outDegree}</h2>
           </div>
           <div className="row small">{model.outDegreeLabel}</div>
         </div>
+        */}
       </div>
       <div className='visible-xs-block'>
         <div className='row info-block'>

@@ -6,6 +6,7 @@ function graphSpecificInfo(graphName) {
     case 'bower':
     case 'cpan':
     case 'cran':
+      return new PublishersGraph(graphName);
     case 'composer':
     case 'rubygems':
     case 'debian':
@@ -32,6 +33,18 @@ function DefaultGraph(graphName) {
   this.getOutDegreeLabel = function getInDegreeLabel(outDegreeValue) {
     return 'out-degree';
   };
+}
+
+function PublishersGraph(graphName) {
+  DefaultGraph.call(this, graphName);
+
+  this.getInDegreeLabel = function getInDegreeLabel(inDegreeValue) {
+    return inDegreeValue === 1 ? 'publishers' : 'publishers';
+  };
+
+  // this.getOutDegreeLabel = function getInDegreeLabel(outDegreeValue) {
+  //   return outDegreeValue === 1 ? 'dependency' : 'dependencies';
+  // };
 }
 
 function PackagesGraph(graphName) {
