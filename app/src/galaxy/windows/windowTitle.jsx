@@ -42,15 +42,19 @@ function contentTemplateSelector(type) {
 function registerDataTemplates() {
   resource.add('DegreeWindowViewModel', maco.template(ctx => {
     if (ctx.id === undefined) return null;
+    var datalist = ctx.nodeName.split("<>")[3]
     return (
-      <h4 className='window-title'>
-        <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span>
+      <h5 className='window-title'>
+        {/* <span className='node-name node-focus' id={ctx.id}>{ctx.nodeName}</span> */}
+        <span id={ctx.id}>{datalist}</span>
+        {/*
         <span> has </span>
         <strong> {ctx.degreeNumber} </strong>
         <span className={ctx.connectionClassName === 'in' ? 'window-indegree' : 'window-outdgree'}>
           {ctx.degreeKindName}
         </span>
-      </h4>
+        */}
+      </h5>
     );
   }, React));
 

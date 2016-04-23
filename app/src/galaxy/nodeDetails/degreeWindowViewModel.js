@@ -40,9 +40,6 @@ function getDegreeName(connectionType, count) {
 }
 
 function publisherName(connectionType, count) {
-  // if (connectionType === 'in') {
-  //   return count === 1 ? 'dependent' : 'dependents';
-  // }
   return count === 1 ? 'publisher' : 'publishers';
 }
 

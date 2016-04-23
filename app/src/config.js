@@ -1,3 +1,3 @@
 export default {
-  dataUrl: '//newOnahtaN.github.io/galactic-data/'
+  dataUrl: '//newonahtan.github.io/galactic-data/'
 };

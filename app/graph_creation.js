@@ -8,8 +8,9 @@ g.addNode('world');
 
 g.addLink('space', 'bar');
 
-function getLabel(id){
-	return id + "<>" + "this is a long game title" + "<>" + "https://cf.geekdo-images.com/images/pic934018_md.jpg";
+function getLabel(id){ 
+	publishers = ["Publisher One", "Publisher Two", "Publisher Three", "Publisher Four"]
+	return id + "<>" + "this is a long game title" + "<>" + "https://cf.geekdo-images.com/images/pic934018_md.jpg" + "<>" + publishers.join(", ");
 }
 
 max = 10000

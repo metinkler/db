@@ -9,10 +9,13 @@ function commonPackageTemplate(model, link, linkText) {
   return (
     <div className='container-fluid row'>
       <div className='hidden-xs'>
-        <div className='col-xs-9'>
+        <div className='col-xs-6'>
           <a href={link} target='_blank'>
             <h4 title={linkText}>{linkText}</h4>
           </a>
+        </div>
+        <div className="col-xs-3">
+          <img src={thumbnail} style={{width: '100%'}}></img> 
         </div>
         <div className="col-xs-3">
           <div className="row">

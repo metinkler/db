@@ -39,15 +39,15 @@ export default class WelcomePage extends React.Component {
                       media='composer_fly_first.png'
                       name='Python (PyPI)'/>
 
-          <Destination description='Packages from .NET world'
+          <Destination description='Links between board games with the same publishers'
                       href='#/galaxy/nuget?l=1'
                       media='nuget_fly_first.png'
-                      name='NuGet'/>
+                      name='Board Games Publishers'/>
           
-          <Destination description='Links between board games with the same publishers'
+          <Destination description='Test Board Game Galaxy'
                       href='#/galaxy/cran?cx=-2482&cy=-5685&cz=-291&lx=0.2264&ly=-0.6790&lz=0.4330&lw=0.5480&ml=200&s=2.75&l=1'
                       media='cran_fly_first.png'
-                      name='Board Games Publishers'/>
+                      name='test'/>
           {/* 
           <Destination description='Debian Package Manager'
                       href='#/galaxy/debian?cx=-201&cy=-6170&cz=-6841&lx=0.5676&ly=-0.7456&lz=0.2400&lw=0.2536&ml=150&s=1.75&l=1'
