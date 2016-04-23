@@ -2,13 +2,12 @@ import React from "react";
 import Destination from './destination.jsx';
 
 export default class WelcomePage extends React.Component {
-  var divStyle = {padding-top: '65px'};
   render() {
     return (
       <div className='container'>
         <h1>Board Game Geek Graph Galaxies</h1>
         <h2>Choose your graph:</h2>
-        <div className='media-list' style={divStyle}>
+        <div className='media-list' style={{'padding-top': '65px'}}>
           {/*  
           <Destination description='Client side JavaScript package manager'
                       href='#/galaxy/bower?l=1'
