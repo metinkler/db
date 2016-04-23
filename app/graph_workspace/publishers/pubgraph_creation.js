@@ -6,7 +6,7 @@ var Client = require('pg-native');
 var conString = "postgres://ncowen:1023714@localhost/ncowen_gamesdb";
 var client = new Client();
 
-maxNumGraphNodes = 4000000;
+maxNumGraphNodes = 10000000;
 
 function getPublishers(game){
     var publishers =  client.querySync("SELECT pubname FROM boardpublisher WHERE boardname = $1::text", [game]); 
