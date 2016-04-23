@@ -7,7 +7,7 @@ export default class WelcomePage extends React.Component {
       <div className='container'>
         <h1>Board Game Geek Graph Galaxies</h1>
         <h2>Choose your graph:</h2>
-        <div className='media-list' style={padding-top: '65px'}>
+        <div className='media-list' style={{padding-top: '65px'}}>
           {/*  
           <Destination description='Client side JavaScript package manager'
                       href='#/galaxy/bower?l=1'
@@ -43,12 +43,12 @@ export default class WelcomePage extends React.Component {
                       href='#/galaxy/nuget?l=1'
                       media='nuget_fly_first.png'
                       name='Board Games Publishers'/>
-          
+          {/* 
           <Destination description='Test Board Game Galaxy'
                       href='#/galaxy/cran?cx=-2482&cy=-5685&cz=-291&lx=0.2264&ly=-0.6790&lz=0.4330&lw=0.5480&ml=200&s=2.75&l=1'
                       media='cran_fly_first.png'
                       name='test'/>
-          {/* 
+          
           <Destination description='Debian Package Manager'
                       href='#/galaxy/debian?cx=-201&cy=-6170&cz=-6841&lx=0.5676&ly=-0.7456&lz=0.2400&lw=0.2536&ml=150&s=1.75&l=1'
                       media='debian_fly_first.png'
