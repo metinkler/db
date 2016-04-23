@@ -13,31 +13,31 @@ export default class WelcomePage extends React.Component {
                       href='#/galaxy/bower?l=1'
                       media='bower_fly_first.png'
                       name='Bower'/>
-
-          <Destination description='Package manager for PHP'
+          */}
+          <Destination description='Links between board games with the same artists'
                       href='#/galaxy/composer?l=1'
                       media='composer_fly_first.png'
-                      name='Composer'/>
+                      name='Board Game Artists'/>
 
-          <Destination description='Package manager for Ruby'
+          <Destination description='Links between board games with the same designers'
                       href='#/galaxy/rubygems?l=1'
                       media='ruby_fly_first.png'
-                      name='RubyGems'/>
+                      name='Board Game Designers'/>
 
-          <Destination description='JavScript package manager'
+          <Destination description='Links between board games in the same genres'
                       href='#/galaxy/npm?cx=-1345&cy=-7006&cz=-6553&lx=0.621700613972938&ly=-0.6458651572907126&lz=0.30983196944957914&lw=0.31678177960626197&l=1'
                       media='npm_fly_first.png'
-                      name='npm'/>
-          */}
-          <Destination description='Packages from Go language (based on go-search.org)'
+                      name='Board Game Genres'/>
+
+          <Destination description='Links between board games in the same families'
                       href='#/galaxy/gosearch?l=1'
                       media='go_fly_first.png'
-                      name='Go Search'/>
+                      name='Board Game Families'/>
 
-          <Destination description='Python Package Index'
+          <Destination description='Links between board games with the same mechanics'
                       href='#/galaxy/python?cx=-2700&cy=377&cz=5622&lx=-0.0869&ly=-0.2315&lz=-0.0338&lw=0.9684&ml=150&s=1.75&l=1&v=2015-09-27T13-00-00Z'
                       media='composer_fly_first.png'
-                      name='Python (PyPI)'/>
+                      name='Board Game Mechanics'/>
 
           <Destination description='Links between board games with the same publishers'
                       href='#/galaxy/nuget?l=1'
