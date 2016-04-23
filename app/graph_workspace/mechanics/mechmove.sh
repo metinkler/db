@@ -1,5 +1,6 @@
 rm /scratch/421/ncowen/galactic-data/python/2015-09-27T13-00-00Z/*
 cd /scratch/421/ncowen/galactic-data/python/2015-09-27T13-00-00Z/
+git checkout gh-pages
 git commit -am "removed data"
 git push origin gh-pages
 cd /scratch/421/ncowen/db/app/graph_workspace/mechanics
