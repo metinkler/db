@@ -15,7 +15,7 @@ function commonPackageTemplate(model, link, linkText) {
           </a>
         </div>
         <div className="col-xs-3">
-          <img src={thumbnail} style={{width: '100%'}}></img> 
+          <img src={thumbnail} style={{width: '100%', 'height' : '50px', 'overflow' : 'hidden'}}></img> 
         </div>
         <div className="col-xs-3">
           <div className="row">
