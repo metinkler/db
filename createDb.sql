@@ -23,6 +23,7 @@ CREATE TABLE card
 	suits		varchar(256),
 	refers	varchar(256),
     num_players varchar(100),
+    url         text,
 	primary key(name)) INHERITS (game);
 
 CREATE TABLE domino
@@ -30,6 +31,7 @@ CREATE TABLE domino
 	domino_type 	varchar(100),
 	refers	varchar(256),
     num_players     varchar(100),
+    url         text,
 	primary key(name)) INHERITS (game);
 
 CREATE TABLE genre
