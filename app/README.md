@@ -15,8 +15,8 @@ First, log into `db` with your William and Mary account. Then type the following
 cd /scratch/421/
 mkdir *personalusername*
 cd *personalusername*
-git clone https://github.com/anvaka/pm
-cd pm
+git clone https://github.com/metinkler/db.git #or clone using ssh, or just download the zip, up to you
+cd db/app
 npm i
 npm start
 ```
