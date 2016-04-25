@@ -215,35 +215,43 @@ def buildTables(allGames, curr):
 
 def insertCardGame(game, curr):
   
-	desc = getDescription("https://www.pagat.com"+game[5])
+	url = "https://www.pagat.com"+game[5]
 
-	cardTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2])
-	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], game[0])
+	desc = getDescription(url)
+
+	cardTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url)
+	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url, game[0])
 
 	try:
-		curr.execute("INSERT INTO card (name, synopsis, complexity, min_players, max_players, numCards, suits, refers, num_players) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);", cardTuple)
+		curr.execute("UPDATE card SET url = %s WHERE name =%s;", (url, game[0]))
+#(name, synopsis, complexity, min_players, max_players, numCards, suits, refers, num_players, url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", cardTuple)
 	except:
-		try: 
-		    curr.execute("UPDATE card SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numCards = %s, suits = %s, refers=%s, num_players = %s WHERE name = %s;", updateTuple)
-		except:
-			pass
+		pass
+		#try: 
+	#	    curr.execute("UPDATE card SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numCards = %s, suits = %s, refers=%s, num_players = %s, url = %s WHERE name = %s;", updateTuple)
+	#	except:
+	#		pass
 
 
 def insertDominoGame(game, curr):
 
+	url = "https://www.pagat.com"+game[5]	
+
+	desc = getDescription(url)
 	
-	desc = getDescription("https://www.pagat.com"+game[5])
-	
-	dominoTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2])
-	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], game[0])
+	dominoTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url)
+	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url, game[0])
 
 	try:
-		curr.execute("INSERT INTO domino (name, synopsis, complexity, min_players, max_players,  numDom, domino_type, refers, num_players) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);", dominoTuple)
+		curr.execute("UPDATE domino SET url = %s WHERE name=%s;", (url, game[0]))
+
+#(name, synopsis, complexity, min_players, max_players,  numDom, domino_type, refers, num_players, url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", dominoTuple)
 	except:
-		try:
-			curr.execute("UPDATE domino SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numDom = %s, domino_type = %s, refers = %s, num_players = %s WHERE name = %s;", updateTuple)
-		except:
-			pass
+		pass
+#		try:
+#			curr.execute("UPDATE domino SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numDom = %s, domino_type = %s, refers = %s, num_players = %s, url = %s WHERE name = %s;", updateTuple)
+#		except:
+#			pass
 
 
 if __name__ == "__main__":
@@ -254,7 +262,7 @@ if __name__ == "__main__":
 	conn = psycopg2.connect("dbname=ncowen_gamesdb user=metink password=Marroy22")
 	conn.autocommit = True
 	curr = conn.cursor()
-		
+	
 	buildTables(listOfGames, curr)
 	
 	curr.close()
