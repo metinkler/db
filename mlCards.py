@@ -70,13 +70,13 @@ def produceRates(easyGames, interGames, hardGames, easyDict, interDict, hardDict
 		maxSum = max([sumEasy, sumInter, sumHard])
 		game = "'" + game + "'"
 		if maxSum == sumEasy:
-			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('easy', game))
+			cur.execute("UPDATE card SET complexity = 'easy' WHERE name = %s;" % (game))
 			print("%s: easy" % (game))
 		elif maxSum == sumInter:
-			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('intermediate', game))
+			cur.execute("UPDATE card SET complexity = 'intermediate' WHERE name = %s;" % (game))
 			print("%s: intermediate" % (game))
 		else:
-			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('hard', game))
+			cur.execute("UPDATE card SET complexity = 'hard' WHERE name = %s;" % (game))
 			print("%s: hard" % (game))
 		
 
