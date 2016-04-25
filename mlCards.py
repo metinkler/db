@@ -14,6 +14,7 @@ import csv
 def main():
 
 	conn = psycopg2.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
+	conn.autocommit = True
 	cur = conn.cursor()
 
 	easyDict = {}
@@ -53,6 +54,9 @@ def main():
 
 	produceRates(easyGames, interGames, hardGames, easyDict, interDict, hardDict, M, priorProbEasy, priorProbInter, priorProbHard, cur)
 
+	cur.close()
+	conn.close()
+
 
 def produceRates(easyGames, interGames, hardGames, easyDict, interDict, hardDict, M, priorProbEasy, priorProbInter, priorProbHard, cur):
 	cur.execute("SELECT name FROM card ORDER BY name;")
@@ -66,13 +70,13 @@ def produceRates(easyGames, interGames, hardGames, easyDict, interDict, hardDict
 		maxSum = max([sumEasy, sumInter, sumHard])
 		game = "'" + game + "'"
 		if maxSum == sumEasy:
-			cur.execute("UPDATE card SET complexity='easy' WHERE name=%s;" % (game))
+			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('easy', game))
 			print("%s: easy" % (game))
 		elif maxSum == sumInter:
-			cur.execute("UPDATE card SET complexity='intermediate' WHERE name=%s;" % (game))
+			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('intermediate', game))
 			print("%s: intermediate" % (game))
 		else:
-			cur.execute("UPDATE card SET complexity='hard' WHERE name=%s;" % (game))
+			cur.execute("UPDATE card SET complexity = %s WHERE name = %s;", ('hard', game))
 			print("%s: hard" % (game))
 		
 
@@ -87,9 +91,9 @@ def classifyGame(game, easyDict, interDict, hardDict, M, priorProbEasy, priorPro
 	synopsis = synopsis.split('\n')
 
 	for line in synopsis:
-			# strip punctuation
 		line = line.strip()
 		if line != '':
+				# strip punctuation
 			line = line.translate(str.maketrans({key: None for key in string.punctuation}))
 			line = line.split()
 			for word in line:
