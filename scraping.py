@@ -14,13 +14,12 @@ dominoTypes = ["Western dominoes", "Chinese dominoes", "Number tiles", "Money ti
 
 
 # Each game is listed in format:
-# [ [Title of game], [Number of Players - can be min, optimal, most], [Type of game], [Number of cards/dominoes/etc. necessary], Link to webpage describing it]
+# [ Title of game, Refers to, Number of Players (string), Type of game, Number of cards/dominoes/etc. necessary (string), Link to webpage describing it, min players, max players]
 
 # Gets the HTML from the page
 def getPage(url):
 	page = urllib2.Request(url)
 	tree = lh.parse(urllib2.urlopen(page))
-	#tree = html.fromstring(page.info())
 	return tree
 
 
@@ -121,18 +120,17 @@ def parseHTML(tree):
 		for item in quantity:
 			quantityString += str(item) + " "
 
-		for item in design:
-			designString += item + " "
+#		for item in design:
+#			designString += item + " "
 
 		# cleaning strings
 		nameString = nameString[:-1]
 		reference = reference[:-1]
 		playerString = playerString[:-1]
-		designString = designString[:-1]
+		#designString = designString[:-1]
 		quantityString = quantityString[:-1]
-		link = link[:-1]
 
-		gameInfo = [nameString, reference, playerString, designString, quantityString, link, minPlayers, maxPlayers]	
+		gameInfo = [nameString, reference, playerString, design, quantityString, link, minPlayers, maxPlayers]	
 		allGames.append(gameInfo)
 	#	print(gameInfo)
 
@@ -172,85 +170,100 @@ def getDescription(url):
 
 					if text.tag != "strong" and text.tag != "a":
 						desc += "\n"
-	
-
-#	print(desc)
-		
-	
-	if len(desc) < 1000:
-		difficulty = 1
-
-	elif len(desc) < 4000 and len(desc) > 1000 :
-		difficulty = 2
-
-	elif len(desc) > 4000 and len(desc) < 9000:
-		difficulty = 3
-
-	elif len(desc) > 9000 and len(desc) < 15000:
-		difficulty = 4
-
-	elif len(desc) > 1500 and len(desc) < 25000:
-		difficulty = 5
-
-	elif len(desc) > 25000:
-		difficulty = 6
-
-#	print(desc)
-#	print(difficulty)
-	descInfo = [desc, difficulty]
-
-	return descInfo
 
 
-def buildTables(allGames):
+	return desc
+
+
+def buildTables(allGames, curr):
 	
 	
 	for item in allGames:
 		# determine the type of game the item is (loop b/c it could be multiple types
-		for type in item[2]:
-			if type in cardTypes:
-				# insert into card database
-				print(item)
-				insertCardGame(item)				
+		
+		# check through list for if it should be inserted into card or domino database, then convert it to string b/c right now it's a list
 
-			if type in dominoTypes:
-				print(item)
-				insertDominoGame(item)
+		cardInsert = 0
+		dominoInsert = 0
+		gameTypeStr = ""
+ 
+		for gameType in item[3]:
+			if gameType in cardTypes:
+				cardInsert += 1
+			elif gameType in dominoTypes:
+				dominoInsert += 1
 
-		print
+			gameTypeStr += gameType + " "
 
-def insertCardGame(game):
-	conn = psycopg2.connect("dbname=ncowen_gamesdb user=ncowen password=1023714")
-	conn.autocommit = True
-	cur = conn.cursor()
+		# replace list with string so it can match database attribute
+		gameTypeStr = gameTypeStr[:-1]
+		item[3] = gameTypeStr
+		
+		# fix empty references to have null value
+		if item[1] == "":
+		  item[1] = None
+		  		
+		if cardInsert > 0:
+			# insert into card database
+			insertCardGame(item, curr)				
 
-	difficulty = getDescription("https://www.pagat.com"+game[5])
+		if dominoInsert > 0:
+			# insert into domino
+			insertDominoGame(item, curr)
+			
 
-#	print ("Name is: %s \n Synopsis is: \n %s \n Complexity is: %s \n, Min_players is: %s \n Max_players is: %s \n, numCards is: %s \n, Suits is: %s \n, Num players is: %s \n" %  (game[0], difficulty[0], difficulty[1], game[6], game[7], game[4], game[3], game[2]))
+
+def insertCardGame(game, curr):
+  
+	url = "https://www.pagat.com"+game[5]
+
+	desc = getDescription(url)
+
+	cardTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url)
+	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url, game[0])
 
 	try:
-		curr.execute("INSERT INTO card (name, synopsis, complexity, min_players, max_players,  numCards, suits, numPlayers) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)" % (game[0], difficulty[0], difficulty[1], game[6], game[7],  game[4], game[3], game[2]))
+		curr.execute("UPDATE card SET url = %s WHERE name =%s;", (url, game[0]))
+#(name, synopsis, complexity, min_players, max_players, numCards, suits, refers, num_players, url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", cardTuple)
 	except:
-		try:
-			curr.execute("UPDATE card SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numCards = %s, suits = %s, numPlayers = %s;" % (difficulty[0], difficulty[1], game[6], game[7], game[4], game[3], game[2]))
-		except:
-			pass
+		pass
+		#try: 
+	#	    curr.execute("UPDATE card SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numCards = %s, suits = %s, refers=%s, num_players = %s, url = %s WHERE name = %s;", updateTuple)
+	#	except:
+	#		pass
 
 
-def insertDominoGame(game):
-	conn = psycopg2.connect("dbname=db.cs.wm.edu user=metink")
-	cur = conn.cursor()
+def insertDominoGame(game, curr):
+
+	url = "https://www.pagat.com"+game[5]	
+
+	desc = getDescription(url)
 	
-	difficulty = getDescription(game[4])
+	dominoTuple = (game[0], desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url)
+	updateTuple = (desc, 0, game[6], game[7], game[4], game[3], game[1], game[2], url, game[0])
 
-#	curr.execute("INSERT INTO domino(Name, NumDom, AddMaterials) VALUES (%s, %s, %s)", (game[0], game[3], game[2]))
-#	curr.execute("INSERT INTO game(name, numPlayers, length, price, rules, complexity, descrition) VALUES (%s %s %s %s %s %s)", (game[0], game[1], NULL, NULL, difficulty[0], difficulty[1], NULL))
+	try:
+		curr.execute("UPDATE domino SET url = %s WHERE name=%s;", (url, game[0]))
+
+#(name, synopsis, complexity, min_players, max_players,  numDom, domino_type, refers, num_players, url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", dominoTuple)
+	except:
+		pass
+#		try:
+#			curr.execute("UPDATE domino SET synopsis = %s, complexity = %s, min_players = %s, max_players = %s, numDom = %s, domino_type = %s, refers = %s, num_players = %s, url = %s WHERE name = %s;", updateTuple)
+#		except:
+#			pass
 
 
 if __name__ == "__main__":
 	print(sys.argv[1])
 	page = getPage(sys.argv[1])
 	listOfGames = parseHTML(page)
-	#getDescription("https://www.pagat.com"+listOfGames[2][5])
-	insertCardGame(listOfGames[0])
-	#buildTables(listOfGames)
+
+	conn = psycopg2.connect("dbname=ncowen_gamesdb user=metink password=Marroy22")
+	conn.autocommit = True
+	curr = conn.cursor()
+	
+	buildTables(listOfGames, curr)
+	
+	curr.close()
+	conn.close()
